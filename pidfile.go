@@ -1,6 +1,7 @@
 // Copyright 2016 zxfonline@sina.com. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
+
 package pidfile
 
 import (
@@ -42,6 +43,7 @@ func (pf *Pidfile) Remove() {
 	}
 }
 func Remove() {
+	defer func() { recover() }()
 	if _localpid != nil {
 		_localpid.Remove()
 	}
